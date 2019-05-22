@@ -12,8 +12,6 @@ client.on('message', msg => {
 	if (!msg.content.startsWith(process.env.PREFIX) || !msg.guild) return;
 	const args = msg.content.slice(prefix.length).split(/ +/);
 	const command = args.shift().toLowerCase();
-	console.log(args)
-	console.log(command)
 
 	if (command === 'bc') {
 		if (!msg.member.hasPermission('ADMINISTRATOR ')) {
@@ -31,9 +29,9 @@ client.on('message', msg => {
 <${prefix}bc all [message] : لارسال رسالة الي جميع اعضاء السيرفر>
 \`\`\`
 		`);
-		
-		const opt = args[0];
-		switch(opt.toLowerCase()) {
+
+		const opt = args[0].toLowerCase();
+		switch(opt) {
 			case 'online':
 				return SendMessage(msg, 'online', args.slice(1).join(' '));
 			case 'idle':
