@@ -96,6 +96,7 @@ async function SendMessage(msg, type, messageSending) {
 				});
 			}
 		} catch(err) {
+			console.error(error.stack)
 			++index;
 		}
 	});
@@ -128,6 +129,7 @@ embed.setAuthor(member.user.username, member.user.avatarURL).addField('⚪ To', 
 				});
 			}
 		} catch(err) {
+			console.error(error.stack)
 			++index;
 		}
 	});
@@ -153,6 +155,7 @@ async function SendMessageAll(msg, messageSending) {
 				});
 			}
 		} catch(err) {
+			console.error(error.stack)
 			++index;
 		}
 	});
