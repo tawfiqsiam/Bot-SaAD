@@ -16,12 +16,11 @@ client.on('message', msg => {
 	if (command === 'bc') {
 		if (!msg.member.hasPermission('ADMINISTRATOR ')) {
 			return msg;
-		}
+		}  // <${prefix}bc embed [message] : لارسال رسالة بامبد الي الاعضاء المتصلين, اي الذين ليسو اوفلاين>
 		if (!args[0]) return msg.channel.send(`
 ** لم يتم تحديد اي مدخلات, من فضلك قم بادخال نوع الرسالة ومحتواها **
 \`\`\`html
 <${prefix}bc [message] : لارسال رسالة الي الاعضاء الاونلاين>
-<${prefix}bc embed [message] : لارسال رسالة بامبد الي الاعضاء المتصلين, اي الذين ليسو اوفلاين>
 <${prefix}bc online [message] : لارسال رسالة الي الاعضاء الاونلاين>
 <${prefix}bc idle [message] : لارسال رسالة الي جيمع الاعضاء الخاملين>
 <${prefix}bc dnd [message] : لارسال رسالة الي الاعضاء المشغولين>
