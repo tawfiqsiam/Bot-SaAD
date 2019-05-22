@@ -6,6 +6,7 @@ const { PREFIX: prefix } = process.env;
 client.on('ready', () => {
 	console.log('Ready!');
 	console.log(`tag: ${client.user.tag}`);
+	client.user.setActivity('Shadow ', { type: 'STREAMING', url: 'https://twitch.tv/DynastyShop' });
 });
 
 client.on('message', msg => {
