@@ -26,7 +26,6 @@
   },
   "homepage": "https://github.com/haneybot2/Bot-SaAD#readme",
   "dependencies": {
-    "discord-akairo": "^7.5.6",
     "discord.js": "^11.5.0"
   }
 }
