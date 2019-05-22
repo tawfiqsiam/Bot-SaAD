@@ -77,10 +77,8 @@ async function SendMessage(msg, type, messageSending) {
 	});
 	index = members.size - index;
 	if (index === 0) return msg.channel.send('**لا استطيع ارسال الرسالة الي اي شخص لديه هذه الحالة**');
-	let str = 'شخص واحد';
-	let str2 = 'شخصين';
-	let b = 'تم ارسال رسالتك الي';
-	await msg.channel.send(index === 1 ? str : (index === 2 ? str2 : `اشخاص \`${index}\``) + b);
+	let str = `اشخاص \`${index}\` تم ارسال رسالتم الي `;
+	await msg.channel.send(index === 1 ? '**تم ارسال رسالتك الي شخص واحد**' : (index === 2 ? 'تم ارسال رسالتك الي شخصين' : str));
 }
 
 async function SendMessageEmbed(msg, messageSending) {
@@ -106,9 +104,8 @@ async function SendMessageEmbed(msg, messageSending) {
 	});
 	index = members.size - index;
 	if (index === 0) return msg.channel.send('**لا استطيع ارسال الرسالة الي اي شخص لديه هذه الحالة**');
-	let str = 'شخص واحد';
-	let str2 = 'شخصين';
-	await msg.channel.send(`${index === 1 ? str : (index === 2 ? str2 : `اشخاص \`${index}\``)} تم ارسال رسالتك الي`);
+	let str = `اشخاص \`${index}\` تم ارسال رسالتم الي `;
+	await msg.channel.send(index === 1 ? '**تم ارسال رسالتك الي شخص واحد**' : (index === 2 ? 'تم ارسال رسالتك الي شخصين' : str));
 }
 async function SendMessageAll(msg, messageSending) {
 	const members = msg.guild.members.filter(member => !member.user.bot);
@@ -131,9 +128,8 @@ async function SendMessageAll(msg, messageSending) {
 	});
 	index = members.size - index;
 	if (index === 0) return msg.channel.send('**لا يمكنني ان رسل هذه الرسالة الي اي شخص في هذا السيرفر**');
-	let str = 'شخص واحد';
-	let str2 = 'شخصين';
-	await msg.channel.send(`${index === 1 ? str : (index === 2 ? str2 : `اشخاص \`${index}\``)} تم ارسال رسالتك الي`);
+	let str = `اشخاص \`${index}\` تم ارسال رسالتم الي `;
+	await msg.channel.send(index === 1 ? '**تم ارسال رسالتك الي شخص واحد**' : (index === 2 ? 'تم ارسال رسالتك الي شخصين' : str));
 }
 
 client.login(process.env.TOKEN);
