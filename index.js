@@ -12,6 +12,8 @@ client.on('message', msg => {
 	if (!msg.content.startsWith(process.env.PREFIX) || !msg.guild) return;
 	const args = msg.content.slice(prefix.length).split(/ +/);
 	const command = args.shift().toLowerCase();
+	console.log(args)
+	console.log(command)
 
 	if (command === 'bc') {
 		if (!msg.member.hasPermission('ADMINISTRATOR ')) {
