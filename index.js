@@ -102,10 +102,14 @@ async function SendMessageEmbed(msg, messageSending) {
 	if (members.size === 0) return msg.channel.send('**ام اتملكن من ان اجد اي عضو لديه هذه الحالة**');
 	let index = 0;
 	const embed = new Discord.RichEmbed()
-			
+			.setColor('#ffae97')
+			.setThumbnail(msg.guild.iconURL)
+			.addField('⚪ From', msg.guidl.name, true);
 	members.forEach(member => {
 		try {
-			member.send(messageSending.replace("[user]", member).replace("<user>", member));
+			member.send(
+embed.setAuthor(member.user.username, member.user.avatarURL).addField('⚪ To', member, true).addField('Message', messageSending.replace("[user]", member).replace("<user>", member), true)
+				   );
 			if (msg.attachments.first()) {
 				member.send({
 					files: [{
