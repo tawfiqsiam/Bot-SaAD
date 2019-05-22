@@ -75,8 +75,7 @@ async function SendMessage(msg, type, messageSending) {
 			++index;
 		}
 	});
-	console.log(members.length)
-	await msg.channel.send(`\`${members.length - index}\` تم ارسال رسالتك الي`);
+	await msg.channel.send(`\`${members.size - index}\` تم ارسال رسالتك الي`);
 }
 
 async function SendMessageEmbed(msg, messageSending) {
@@ -99,7 +98,7 @@ async function SendMessageEmbed(msg, messageSending) {
 			++index;
 		}
 	});
-	await msg.channel.send(`\`${members.length - index}\` تم ارسال رسالتك الي`);
+	await msg.channel.send(`\`${members.size - index}\` تم ارسال رسالتك الي`);
 }
 async function SendMessageAll(msg, messageSending) {
 	const members = msg.guild.members.filter(member => !member.user.bot);
@@ -119,7 +118,7 @@ async function SendMessageAll(msg, messageSending) {
 			++index;
 		}
 	});
-	await msg.channel.send(`\`${members.length - index}\` تم ارسال رسالتك الي`);
+	await msg.channel.send(`\`${members.size - index}\` تم ارسال رسالتك الي`);
 }
 
 client.login(process.env.TOKEN);
