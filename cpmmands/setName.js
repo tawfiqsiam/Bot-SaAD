@@ -3,8 +3,8 @@ const { PREFIX: prefix } = process.env;
 
 class SetNameCommand extends Command {
     constructor() {
-        super('setName', {
-            aliases: ['setName'],
+        super('setname', {
+            aliases: ['setname'],
             channelRestriction: 'guild',
             ownerOnly: true
         });
