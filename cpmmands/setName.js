@@ -3,15 +3,15 @@ const { PREFIX: prefix } = process.env;
 
 class SetNameCommand extends Command {
     constructor() {
-        super('ping', {
-            aliases: ['bc'],
+        super('setName', {
+            aliases: ['setName'],
             channelRestriction: 'guild',
             ownerOnly: true
         });
     }
 
     exec(msg) {
-        if (ids.includes(msg.author.id)) return msg.channel.send('اظن انو هذا الامر ليس مسموح لك');
+        const args = msg.content.slice(prefix.length).split(/ +/);
         const newName = args.join(' ');
         if (!newName) return msg.channel.send('**يرجي ادخال الاسم الجديد**');
         client.user.setUsername();
