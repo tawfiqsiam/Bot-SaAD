@@ -19,7 +19,7 @@ client.on('message', msg => {
 		}
 		if (!args && !args.length) return msg.channel.send(`
 ** لم يتم تحديد اي مدخلات, من فضلك قم بادخال نوع الرسالة ومحتواها **
-```html
+\`\`\`html
 <${prefix}bc [message] : لارسال رسالة الي الاعضاء الاونلاين>
 <${prefix}bc embed [message] : لارسال رسالة بامبد الي الاعضاء المتصلين, اي الذين ليسو اوفلاين>
 <${prefix}bc online [message] : لارسال رسالة الي الاعضاء الاونلاين>
@@ -27,7 +27,7 @@ client.on('message', msg => {
 <${prefix}bc dnd [message] : لارسال رسالة الي الاعضاء المشغولين>
 <${prefix}bc offline [message] : لارسال رسالة الي الاعضاء الاوفلاين>
 <${prefix}bc all [message] : لارسال رسالة الي جميع اعضاء السيرفر>
-```
+\`\`\`
 		`);
 		
 		const opt = args[0];
