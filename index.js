@@ -68,6 +68,7 @@ client.on('message', msg => {
 });
 
 async function SendMessage(msg, type, messageSending) {
+	if (!messageSending) return msg.channel.send('**من فضلك قم بكتابة الرسالة**');
 	let filter;
 	if (type === 'online') filter = member => member.presence.status === 'online' && !member.user.bot;
 	else if (type === 'idle') filter = member => member.presence.status === 'idle' && !member.user.bot;
@@ -101,13 +102,14 @@ async function SendMessage(msg, type, messageSending) {
 }
 
 async function SendMessageEmbed(msg, messageSending) {
+	if (!messageSending) return msg.channel.send('**من فضلك قم بكتابة الرسالة**');
 	const members = msg.guild.members.filter(member => member.presence.status !== 'offline' && !member.user.bot);
 	if (members.size === 0) return msg.channel.send('**ام اتملكن من ان اجد اي عضو لديه هذه الحالة**');
 	let index = 0;
 	const embed = new Discord.RichEmbed()
 			.setColor('#ffae97')
 			.setThumbnail(msg.guild.iconURL)
-			.addField('⚪ From', msg.guidl.name, true);
+			.addField('⚪ From', msg.guild.name, true);
 	members.forEach(member => {
 		try {
 			member.send(
@@ -131,6 +133,7 @@ embed.setAuthor(member.user.username, member.user.avatarURL).addField('⚪ To', 
 	await msg.channel.send(index === 1 ? '**تم ارسال رسالتك الي شخص واحد**' : (index === 2 ? '**تم ارسال رسالتك الي شخصين**' : str));
 }
 async function SendMessageAll(msg, messageSending) {
+	if (!messageSending) return msg.channel.send('**من فضلك قم بكتابة الرسالة**');
 	const members = msg.guild.members.filter(member => !member.user.bot);
 	if (members.size === 0) return msg.channel.send('**يبدو انه لا يوجد احد في السيرفر, هذا يفسر لماذا لم اتمكن من اجد اي شخص في هذا السيرفر**');
 	let index = 0;
