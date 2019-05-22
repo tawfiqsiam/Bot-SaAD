@@ -75,6 +75,7 @@ async function SendMessage(msg, type, messageSending) {
 			++index;
 		}
 	});
+	console.log(members.length)
 	await msg.channel.send(`\`${members.length - index}\` تم ارسال رسالتك الي`);
 }
 
