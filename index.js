@@ -59,6 +59,7 @@ async function SendMessage(msg, type, messageSending) {
 	else return;
 
 	const members = msg.guild.members.filter(filter);
+	if (members.size === 0) return msg.channel.send('**ام اتملكن من ان اجد اي عضو لديه هذه الحالة**');
 	let index = 0;
 	members.forEach(member => {
 		try {
@@ -75,11 +76,16 @@ async function SendMessage(msg, type, messageSending) {
 			++index;
 		}
 	});
-	await msg.channel.send(`\`${members.size - index}\` تم ارسال رسالتك الي`);
+	index = members.size - index;
+	if (index === 0) return msg.channel.send('**لا استطيع ارسال الرسالة الي اي شخص لديه هذه الحالة**');
+	let str = 'شخص واحد';
+	let str2 = 'شخصين';
+	await msg.channel.send(`${index === 1 ? str : (index === 2 ? str2 : `اشخاص \`${index}\``)} تم ارسال رسالتك الي`);
 }
 
 async function SendMessageEmbed(msg, messageSending) {
 	const members = msg.guild.members.filter(member => member.presence.status !== 'offline' && !member.user.bot);
+	if (members.size === 0) return msg.channel.send('**ام اتملكن من ان اجد اي عضو لديه هذه الحالة**');
 	let index = 0;
 	const embed = new Discord.RichEmbed()
 			
@@ -98,10 +104,15 @@ async function SendMessageEmbed(msg, messageSending) {
 			++index;
 		}
 	});
-	await msg.channel.send(`\`${members.size - index}\` تم ارسال رسالتك الي`);
+	index = members.size - index;
+	if (index === 0) return msg.channel.send('**لا استطيع ارسال الرسالة الي اي شخص لديه هذه الحالة**');
+	let str = 'شخص واحد';
+	let str2 = 'شخصين';
+	await msg.channel.send(`${index === 1 ? str : (index === 2 ? str2 : `اشخاص \`${index}\``)} تم ارسال رسالتك الي`);
 }
 async function SendMessageAll(msg, messageSending) {
 	const members = msg.guild.members.filter(member => !member.user.bot);
+	if (members.size === 0) return msg.channel.send('**يبدو انه لا يوجد احد في السيرفر, هذا يفسر لماذا لم اتمكن من اجد اي شخص في هذا السيرفر**');
 	let index = 0;
 	members.forEach(member => {
 		try {
@@ -118,7 +129,11 @@ async function SendMessageAll(msg, messageSending) {
 			++index;
 		}
 	});
-	await msg.channel.send(`\`${members.size - index}\` تم ارسال رسالتك الي`);
+	index = members.size - index;
+	if (index === 0) return msg.channel.send('**لا يمكنني ان رسل هذه الرسالة الي اي شخص في هذا السيرفر**');
+	let str = 'شخص واحد';
+	let str2 = 'شخصين';
+	await msg.channel.send(`${index === 1 ? str : (index === 2 ? str2 : `اشخاص \`${index}\``)} تم ارسال رسالتك الي`);
 }
 
 client.login(process.env.TOKEN);
