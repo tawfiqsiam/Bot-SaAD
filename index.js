@@ -17,7 +17,7 @@ client.on('message', msg => {
 		if (!msg.member.hasPermission('ADMINISTRATOR ')) {
 			return msg;
 		}
-		if (!args && !args.length) return msg.channel.send(`
+		if (!args && !args[0] && !args.length) return msg.channel.send(`
 ** لم يتم تحديد اي مدخلات, من فضلك قم بادخال نوع الرسالة ومحتواها **
 \`\`\`html
 <${prefix}bc [message] : لارسال رسالة الي الاعضاء الاونلاين>
