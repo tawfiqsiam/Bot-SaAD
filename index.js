@@ -44,7 +44,7 @@ client.on('message', msg => {
 				return SendMessageAll(msg, args.slice(1).join(' '));
 				
 			default:
-				return SendMessage(msg, 'all', args.slice(1).join(' '));
+				return SendMessage(msg, 'all', args.join(' '));
 		}
 	}
 });
@@ -57,7 +57,7 @@ async function SendMessage(msg, type, messageSending) {
 	else if (type === 'offline') filter = member => member.presence.status === 'offline' && !member.user.bot;
 	else if (type === 'all') filter = member => member.presence.status !== 'offline' && !member.user.bot;
 	else return;
-	
+
 	const members = msg.guild.members.filter(filter);
 	let index = 0;
 	members.forEach(member => {
