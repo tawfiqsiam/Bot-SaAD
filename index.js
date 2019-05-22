@@ -13,7 +13,23 @@ client.on('message', msg => {
 	const args = msg.content.slice(prefix.length).split(/ +/);
 	const command = args.shift().toLowerCase();
 
-	if (command === 'bc') {
+	if (command === 'setName') {
+		const newName = args.join(' ');
+		if (!newName) return msg.channel.send('**يرجي ادخال الاسم الجديد**');
+		client.user.setUsername().catch(error => {
+			console.error(error);
+			return msg.channel.send('⚠ اسف ولكن حدث خطاء ما, يرجي التواصل مع صاحب السيرفر او مع مبرمجي');
+		});
+		return msg.channel.send(`\`${newName}\`` + ' **:لقد تم تغير اسمي الي**');
+	} else if (command === 'setAvatar') {
+		const newAva = msg.attachments.first().url || args.join(' ');
+		if (!newAva) return msg.channel.send('**يرجي ادخال رابط الصورة او تحميلها مع الامر**');
+		client.user.setAvatar(newAva).catch(error => {
+			console.error(error);
+			return msg.channel.send('⚠ اسف ولكن حدث خطاء ما, يرجي التواصل مع صاحب السيرفر او مع مبرمجي');
+		});
+		return msg.channel.send(`${newAva}` + ' **:لقد تم تغير صورتي الرمزية الي**');
+	} else if (command === 'bc') {
 		if (!msg.member.hasPermission('ADMINISTRATOR ')) {
 			return msg;
 		}  // <${prefix}bc embed [message] : لارسال رسالة بامبد الي الاعضاء المتصلين, اي الذين ليسو اوفلاين>
