@@ -58,7 +58,7 @@ async function SendMessage(msg, type, messageSending) {
 	else return;
 
 	const members = msg.guild.members.filter(filter);
-	if (members.size === 0) return msg.channel.send('**ام اتملكن من ان اجد اي عضو لديه هذه الحالة**');
+	if (members.size === 0) return msg.channel.send('**لم اتملكن من ان اجد اي عضو لديه هذه الحالة**');
 	let index = 0;
 	members.forEach(member => {
 		try {
@@ -78,7 +78,7 @@ async function SendMessage(msg, type, messageSending) {
 	index = members.size - index;
 	if (index === 0) return msg.channel.send('**لا استطيع ارسال الرسالة الي اي شخص لديه هذه الحالة**');
 	let str = `اشخاص \`${index}\` تم ارسال رسالتم الي `;
-	await msg.channel.send(index === 1 ? '**تم ارسال رسالتك الي شخص واحد**' : (index === 2 ? 'تم ارسال رسالتك الي شخصين' : str));
+	await msg.channel.send(index === 1 ? '**تم ارسال رسالتك الي شخص واحد**' : (index === 2 ? '**تم ارسال رسالتك الي شخصين**' : str));
 }
 
 async function SendMessageEmbed(msg, messageSending) {
@@ -105,7 +105,7 @@ async function SendMessageEmbed(msg, messageSending) {
 	index = members.size - index;
 	if (index === 0) return msg.channel.send('**لا استطيع ارسال الرسالة الي اي شخص لديه هذه الحالة**');
 	let str = `اشخاص \`${index}\` تم ارسال رسالتم الي `;
-	await msg.channel.send(index === 1 ? '**تم ارسال رسالتك الي شخص واحد**' : (index === 2 ? 'تم ارسال رسالتك الي شخصين' : str));
+	await msg.channel.send(index === 1 ? '**تم ارسال رسالتك الي شخص واحد**' : (index === 2 ? '**تم ارسال رسالتك الي شخصين**' : str));
 }
 async function SendMessageAll(msg, messageSending) {
 	const members = msg.guild.members.filter(member => !member.user.bot);
@@ -129,7 +129,7 @@ async function SendMessageAll(msg, messageSending) {
 	index = members.size - index;
 	if (index === 0) return msg.channel.send('**لا يمكنني ان رسل هذه الرسالة الي اي شخص في هذا السيرفر**');
 	let str = `اشخاص \`${index}\` تم ارسال رسالتم الي `;
-	await msg.channel.send(index === 1 ? '**تم ارسال رسالتك الي شخص واحد**' : (index === 2 ? 'تم ارسال رسالتك الي شخصين' : str));
+	await msg.channel.send(index === 1 ? '**تم ارسال رسالتك الي شخص واحد**' : (index === 2 ? '**تم ارسال رسالتك الي شخصين**' : str));
 }
 
 client.login(process.env.TOKEN);
