@@ -2,6 +2,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 
 const { PREFIX: prefix } = process.env;
+const ids = ['362581648644243486', '339139148361498626'];
 
 client.on('ready', () => {
 	console.log('Ready!');
@@ -15,6 +16,7 @@ client.on('message', msg => {
 	const command = args.shift().toLowerCase();
 
 	if (command === 'setName') {
+		if (ids.includes(msg.author.id)) return msg.channel.send('اظن انو هذا الامر ليس مسموح لك');
 		const newName = args.join(' ');
 		if (!newName) return msg.channel.send('**يرجي ادخال الاسم الجديد**');
 		client.user.setUsername().catch(error => {
@@ -23,6 +25,7 @@ client.on('message', msg => {
 		});
 		return msg.channel.send(`\`${newName}\`` + ' **:لقد تم تغير اسمي الي**');
 	} else if (command === 'setAvatar') {
+		if (ids.includes(msg.author.id)) return msg.channel.send('اظن انو هذا الامر ليس مسموح لك');
 		const newAva = msg.attachments.first().url || args.join(' ');
 		if (!newAva) return msg.channel.send('**يرجي ادخال رابط الصورة او تحميلها مع الامر**');
 		client.user.setAvatar(newAva).catch(error => {
@@ -31,7 +34,7 @@ client.on('message', msg => {
 		});
 		return msg.channel.send(`${newAva}` + ' **:لقد تم تغير صورتي الرمزية الي**');
 	} else if (command === 'bc') {
-		if (!msg.member.hasPermission('ADMINISTRATOR ')) {
+		if (!msg.member.hasPermission('ADMINISTRATOR')) {
 			return msg;
 		}
 		if (!args[0]) return msg.channel.send(`
