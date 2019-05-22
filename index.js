@@ -79,7 +79,8 @@ async function SendMessage(msg, type, messageSending) {
 	if (index === 0) return msg.channel.send('**لا استطيع ارسال الرسالة الي اي شخص لديه هذه الحالة**');
 	let str = 'شخص واحد';
 	let str2 = 'شخصين';
-	await msg.channel.send(`${index === 1 ? str : (index === 2 ? str2 : `اشخاص \`${index}\``)} تم ارسال رسالتك الي`);
+	let b = 'تم ارسال رسالتك الي';
+	await msg.channel.send(index === 1 ? str : (index === 2 ? str2 : `اشخاص \`${index}\``) + b);
 }
 
 async function SendMessageEmbed(msg, messageSending) {
