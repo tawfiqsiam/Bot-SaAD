@@ -5,7 +5,7 @@ const { PREFIX: prefix } = process.env;
 const ids = ['362581648644243486', '339139148361498626'];
 
 client.on('ready', () => {
-	console.log('Ready!');
+	console.log('ready!');
 	console.log(`tag: ${client.user.tag}`);
 	client.user.setActivity('Shadow ', { type: 'STREAMING', url: 'https://twitch.tv/DynastyShop' });
 });
