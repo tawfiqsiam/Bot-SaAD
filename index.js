@@ -7,7 +7,7 @@ const ids = ['362581648644243486', '339139148361498626'];
 client.on('ready', () => {
 	console.log('ready!');
 	console.log(`tag: ${client.user.tag}`);
-	client.user.setActivity('Shadow ', { type: 'STREAMING', url: 'https://twitch.tv/DynastyShop' });
+	client.user.setActivity('Mircale', { type: 'STREAMING', url: 'https://twitch.tv/DynastyShop' });
 });
 
 client.on('message', msg => {
