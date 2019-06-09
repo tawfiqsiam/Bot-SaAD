@@ -3,28 +3,10 @@
   "version": "1.0.0",
   "description": ".",
   "main": "index.js",
-  "engines": {
-    "node": ">=11.0.0",
-    "npm": "*"
-  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/haneybot2/Bot-SaAD.git"
-  },
-  "keywords": [
-    "heroku",
-    "discord.js"
-  ],
-  "author": "RedDEad",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/haneybot2/Bot-SaAD/issues"
-  },
-  "homepage": "https://github.com/haneybot2/Bot-SaAD#readme",
   "dependencies": {
     "discord.js": "^11.5.0"
   }
