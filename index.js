@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 
-const { PREFIX: s! } = process.env;
+const { PREFIX: prefix } = process.env;
 const ids = ['362581648644243486', '339139148361498626'];
 
 client.on('ready', () => {
