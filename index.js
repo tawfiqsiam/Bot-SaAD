@@ -41,12 +41,12 @@ client.on('message', msg => {
 ** You have to add a text **
 \`\`\`html
 <${prefix}bc [message] : to send a dm to the online members >
-<${prefix}bc embed [message] : To send a dm to all members with embed>
-<${prefix}bc online [message] : To send a dm to the online members only>
-<${prefix}bc idle [message] : To send a dm to the members who are idle>
+<${prefix}bc embed [message] : To send a dm to all members with embed >
+<${prefix}bc online [message] : To send a dm to the online members only >
+<${prefix}bc idle [message] : To send a dm to the members who are idle >
 <${prefix}bc dnd [message] : To send a dm to the members who are DND>
 <${prefix}bc offline [message] : To send a dm to the offline members >
-<${prefix}bc all [message] : To send a dm to all of the members>
+<${prefix}bc all [message] : To send a dm to all of the members >
 \`\`\`
 		`);
 
