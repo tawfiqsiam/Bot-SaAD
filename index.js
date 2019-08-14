@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 
-const { PREFIX: prefix } = process.env;
+const { PREFIX: s! } = process.env;
 const ids = ['362581648644243486', '339139148361498626'];
 
 client.on('ready', () => {
@@ -38,15 +38,15 @@ client.on('message', msg => {
 			return msg;
 		}
 		if (!args[0]) return msg.channel.send(`
-** لم يتم تحديد اي مدخلات, من فضلك قم بادخال نوع الرسالة ومحتواها **
+** You have to add a text **
 \`\`\`html
-<${prefix}bc [message] : لارسال رسالة الي الاعضاء الاونلاين>
-<${prefix}bc embed [message] : لارسال رسالة بامبد الي الاعضاء المتصلين, اي الذين ليسو اوفلاين>
-<${prefix}bc online [message] : لارسال رسالة الي الاعضاء الاونلاين>
-<${prefix}bc idle [message] : لارسال رسالة الي جيمع الاعضاء الخاملين>
-<${prefix}bc dnd [message] : لارسال رسالة الي الاعضاء المشغولين>
-<${prefix}bc offline [message] : لارسال رسالة الي الاعضاء الاوفلاين>
-<${prefix}bc all [message] : لارسال رسالة الي جميع اعضاء السيرفر>
+<${prefix}bc [message] : to send a dm to the online members >
+<${prefix}bc embed [message] : To send a dm to all members with embed>
+<${prefix}bc online [message] : To send a dm to the online members only>
+<${prefix}bc idle [message] : To send a dm to the members who are idle>
+<${prefix}bc dnd [message] : To send a dm to the members who are DND>
+<${prefix}bc offline [message] : To send a dm to the offline members >
+<${prefix}bc all [message] : To send a dm to all of the members>
 \`\`\`
 		`);
 
@@ -72,7 +72,7 @@ client.on('message', msg => {
 });
 
 async function SendMessage(msg, type, messageSending) {
-	if (!messageSending) return msg.channel.send('**من فضلك قم بكتابة الرسالة**');
+	if (!messageSending) return msg.channel.send('**Please add a text**');
 	let filter;
 	if (type === 'online') filter = member => member.presence.status === 'online' && !member.user.bot;
 	else if (type === 'idle') filter = member => member.presence.status === 'idle' && !member.user.bot;
@@ -82,7 +82,7 @@ async function SendMessage(msg, type, messageSending) {
 	else return;
 
 	const members = msg.guild.members.filter(filter);
-	if (members.size === 0) return msg.channel.send('**لم اتملكن من ان اجد اي عضو لديه هذه الحالة**');
+	if (members.size === 0) return msg.channel.send('**I could not find anyone with that status**');
 	let index = 0;
 	members.forEach(member => {
 		try {
@@ -101,15 +101,15 @@ async function SendMessage(msg, type, messageSending) {
 		}
 	});
 	index = members.size - index;
-	if (index === 0) return msg.channel.send('**لا استطيع ارسال الرسالة الي اي شخص لديه هذه الحالة**');
-	let str = ` تم ارسال رسالتك الي \`${index}\``;
-	await msg.channel.send(index === 1 ? '**تم ارسال رسالتك الي شخص واحد**' : (index === 2 ? '**تم ارسال رسالتك الي شخصين**' : str));
+	if (index === 0) return msg.channel.send('**I could not find any one with that status**');
+	let str =`Sent the dm to  \`${index}\``;
+	await msg.channel.send(index === 1 ? '**Sent to 1 member**' : (index === 2 ? '**Sent to 2 members **' : str));
 }
 
 async function SendMessageEmbed(msg, messageSending) {
-	if (!messageSending) return msg.channel.send('**من فضلك قم بكتابة الرسالة**');
+	if (!messageSending) return msg.channel.send('**Please add a text**');
 	const members = msg.guild.members.filter(member => member.presence.status !== 'offline' && !member.user.bot);
-	if (members.size === 0) return msg.channel.send('**ام اتملكن من ان اجد اي عضو لديه هذه الحالة**');
+	if (members.size === 0) return msg.channel.send('**I could not find any one with that status**');
 	let index = 0;
 	const embed = new Discord.RichEmbed()
 			.setColor('#ffae97')
